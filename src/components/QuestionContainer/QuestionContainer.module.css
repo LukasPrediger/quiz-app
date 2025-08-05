@@ -1,0 +1,11 @@
+.QuestionContainer {
+    display: flex;
+    flex-direction: column;
+    align-items: stretch;
+}
+
+.AnswerContainer {
+    display: flex;
+    flex-direction: column;
+    row-gap: 8px;
+}
