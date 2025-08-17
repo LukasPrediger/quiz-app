@@ -19,7 +19,7 @@ export function App() {
   })
 
   const [results, setResults] = useState<Array<QuestionResult> | undefined>()
-
+  
   if (questions !== undefined) {
     if (results !== undefined) {
       const stats = generateStats(questions.length, results || [])
@@ -29,7 +29,11 @@ export function App() {
         <h3>Answers: {stats.correctAnswers}/{stats.answers}</h3>
       </>)
     } else {
-      return <Quiz questions={questions} onQuizFinished={setResults} />
+      return (
+        <div id="app-container">
+          <Quiz questions={questions} onQuizFinished={setResults} />
+        </div>
+      )
     }
   } else {
     return (

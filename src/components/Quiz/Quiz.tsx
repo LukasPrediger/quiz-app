@@ -44,7 +44,7 @@ const Quiz: FC<QuizProps> = ({questions, onQuizFinished}) => {
   }
 
   return (
-    <div className={styles.Quiz}>
+    <>
       <h2>{stats.answers+1} / {stats.questionCount}</h2>
       <QuestionContainer
         key={cyrb53String(questions[questionIndex].question)}
@@ -52,7 +52,7 @@ const Quiz: FC<QuizProps> = ({questions, onQuizFinished}) => {
         onNextQuestion={nextQuestion}
         onReset={() => {setResults([])}}
       />
-    </div>
+    </>
   );
 };
 

@@ -1,5 +1,5 @@
 import React, { FC, useState } from 'react';
-import styles from './AnswerButton.module.css';
+import './AnswerButton.css';
 
 interface AnswerButtonProps {
   answer: string
@@ -13,10 +13,10 @@ const AnswerButton: FC<AnswerButtonProps> = ({ answer, anyButtonPressed, isCorre
 
   let className = ""
   if (anyButtonPressed && isCorrectAnswer) {
-    className = styles.correct 
+    className = "correct" 
   }
   else if (pressed) {
-    className = styles.wrong
+    className = "wrong"
   }
 
   return (
