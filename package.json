@@ -5,7 +5,8 @@
   "source": "src/index.html",
   "scripts": {
     "start": "parcel",
-    "build": "parcel build"
+    "build": "parcel build",
+    "build:prd": "parcel build --public-url quiz-app"
   },
   "dependencies": {
     "react": "^19.1.0",
