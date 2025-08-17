@@ -32,7 +32,9 @@ jobs:
           cache: npm
           cache-dependency-path: package-lock.json
       - name: Build website
-        run: npm run build
+        run: |
+          npm install
+          npm run build
       
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v3
