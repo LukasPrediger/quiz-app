@@ -7,12 +7,13 @@ import cyrb53String from '../../hash';
 
 interface QuestionContainerProps {
   question: Question,
-  onNextQuestion: (result: QuestionResult) => void
+  onNextQuestion: (result: QuestionResult) => void,
+  onReset: () => void
 }
 
 type AnswerTupel = [string, boolean]
 
-const QuestionContainer: FC<QuestionContainerProps> = ({question, onNextQuestion}) => {
+const QuestionContainer: FC<QuestionContainerProps> = ({question, onNextQuestion, onReset}) => {
   const [anyButtonPressed, setAnyButtonPressed] = useState<boolean>(false)
   const [questionResult, setQuestionResult] = useState<QuestionResult|undefined>()
 
@@ -27,6 +28,12 @@ const QuestionContainer: FC<QuestionContainerProps> = ({question, onNextQuestion
   const answers = useMemo(() => shuffle(
     question.otherAnswers.reduce((acc, curr) => [...acc, [curr, false] as AnswerTupel], [[question.correctAnswer, true]] as AnswerTupel[])
   ), [question]);
+
+  function onResetClick() {
+    if (window.confirm("Reset the quiz? All progress will be lost!")) {
+      onReset()
+    }
+  }
 
   return (
     <div className={styles.QuestionContainer}>
@@ -49,6 +56,7 @@ const QuestionContainer: FC<QuestionContainerProps> = ({question, onNextQuestion
         <button disabled = { !questionResult } onClick={() => {
           onNextQuestion(questionResult!!)
         }}>Next</button>
+        <button onClick={onResetClick}>Reset</button>
       </div>
     </div>
   );
